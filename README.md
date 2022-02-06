@@ -10,7 +10,7 @@ Procedure briefly:
 1. Run 'runToolkit.py'
 2. Examine the outputted FoM mosaics, and choose the best model for each trajectory, eg (42, 47, 49).
 3. Run 'plotSelectedIterations.py'
-4. Re-run 'runToolkit.py' with 'useFullLibraryFlag' = False
+4. Re-run 'runToolkit.py' with 'useFullLibraryFlag' = False and the boolean array 'unionFunctionsToUseArray' pasted in.
 5. Repeat steps 2 and 3 with the new mosaics.
 
 -----------------------------
