@@ -149,7 +149,7 @@ pickleFilenamePrefix = 'runResults'  # We'll append the above items plus .pickle
 
 #%% System details:
     
-modelSystem = 'lorenz'  # 'lorenz' # 'harmOscLinear' # 'harmOscCubic'  # 'threeDimLinear'
+modelSystem = 'lorenz' # 'lorenz' # 'harmOscLinear' # 'harmOscCubic'  # 'threeDimLinear'
                              # 'hopfNormal2D'  # 'hopfNormal3D'
 # NOTE: Parameters for each system are set in a section near the end of user entries.
 

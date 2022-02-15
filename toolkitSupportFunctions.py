@@ -590,8 +590,8 @@ def calcWeightArray_fn(cNew, functionsToUseArray, imputed, coeffWeightsCutoffFac
         if np.sum(functionsToUseArray[i, :]) > 0:
             temp = imputed.copy()
             centralVal = np.percentile(temp[functionsToUseArray[i, :]],
-                                      percentileOfImputedValuesForWeights, 
-                                      interpolation='lower')  
+                                       percentileOfImputedValuesForWeights, 
+                                       interpolation='lower')  
             # Over functionals currently active for this variable.
             # Moderate the extremes of this vector:
             temp[temp >  coeffWeightsCutoffFactor * centralVal] = \
@@ -599,8 +599,8 @@ def calcWeightArray_fn(cNew, functionsToUseArray, imputed, coeffWeightsCutoffFac
             temp[temp < centralVal / coeffWeightsCutoffFactor] = \
                 centralVal / coeffWeightsCutoffFactor
             temp = temp * functionsToUseArray[i, :]  # Zero the weights of unused functions.
-            # Normalize (comment: It would be nice if the normalization here penalized vars
-            # with many active functionals (to enforce sparsity). Needs work.):
+            # Normalize (comment: It would be nice if the normalization here penalized variables
+            # with many active functionals, to enforce sparsity.):
             temp = temp / np.median(temp[temp > 0])  # So in the ballpark of 1
             weightArray[i, :] = temp
 

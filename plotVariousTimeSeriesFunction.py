@@ -111,9 +111,9 @@ def plotVariousTimeseries_fn(showPlotsFlag, d, iterationsToUse=[]):
         for j in range(numTrajTrain):
             xTrainNoisyOriginal = xTrainNoisyOriginalAll[j]
             yLimits = (1.1 * np.percentile(xTrainNoisyOriginal.flatten(), 1),  # hope it's negative
-                       1.1 * np.percentile(xTrainNoisyOriginal.flatten(), 99.9))
+                       1.1 * np.percentile(xTrainNoisyOriginal.flatten(), 99.9))            
             xTrainClean = xTrainCleanAll[j]
-            for i in range(xTrainNoisyOriginal.shape[1]):
+            for i in range(xTrainNoisyOriginal.shape[1]): 
                 axs[i, j].plot(tTrain[inds], xTrainClean[inds,i], 'b', linewidth = 1,
                                     label='clean')
                 axs[i, j].plot(tTrain[inds], xTrainNoisyOriginal[inds,i], '.', color='gray',
@@ -354,7 +354,8 @@ def plotVariousTimeseries_fn(showPlotsFlag, d, iterationsToUse=[]):
             # Other j-dependent details:
             ax[j].set_xlabel(variableNames[0], fontweight='bold', fontsize=12)
             ax[j].set_ylabel(variableNames[1], fontweight='bold', fontsize=12)
-            ax[j].set_zlabel(variableNames[2], fontweight='bold', fontsize=12)
+            if numVars > 2:
+                ax[j].set_zlabel(variableNames[2], fontweight='bold', fontsize=12)
             
             ax[j].set_xlim((min(xTrainNoisyOriginal[:, 0]), max(xTrainNoisyOriginal[:, 0])))
             ax[j].set_ylim((min(xTrainNoisyOriginal[:, 1]), max(xTrainNoisyOriginal[:, 1])))
@@ -380,7 +381,7 @@ def plotVariousTimeseries_fn(showPlotsFlag, d, iterationsToUse=[]):
                 xTrainClean = np.hstack((xTrainClean, np.zeros(xTrainClean.shape)))
 
             ax[j].plot(xTrainNoisyOriginal[inds, 0], xTrainNoisyOriginal[inds, 1],
-                      xTrainNoisyOriginal[inds, 2], '.', color='gray') # the noisy data points
+                       xTrainNoisyOriginal[inds, 2], '.', color='gray') # the noisy data points
             ax[j].plot(xTrainClean[inds, 0], xTrainClean[inds, 1], xTrainClean[inds, 2], 'g')
             ax[j].plot(xTrain[inds, 0], xTrain[inds, 1], xTrain[inds, 2], 'k.', markersize=1)
 
@@ -439,10 +440,11 @@ def plotVariousTimeseries_fn(showPlotsFlag, d, iterationsToUse=[]):
             
             ax[j].set_xlabel(variableNames[0], fontweight='bold', fontsize=12)
             ax[j].set_ylabel(variableNames[1], fontweight='bold', fontsize=12)
-            ax[j].set_zlabel(variableNames[2], fontweight='bold', fontsize=12)
+            if numVars > 2:
+                ax[j].set_zlabel(variableNames[2], fontweight='bold', fontsize=12)
             
             ax[j].set_xlim((min(xTrainNoisyOriginal[:, 0]), max(xTrainNoisyOriginal[:, 0])))
-            ax[j].set_ylim((min(xTrainNoisyOriginal[:, 1]), max(xTrainNoisyOriginal[:, 1])))
+            ax[j].set_ylim((min(xTrainNoisyOriginal[:, 1]), max(xTrainNoisyOriginal[:, 1]))) 
             ax[j].set_zlim((min(xTrainNoisyOriginal[:, 2]), max(xTrainNoisyOriginal[:, 2])))
             ax[j].set_title('Train traj ' + str(j) + '\n' + 'clean = green, smoothed = black' + \
                             ', predicted = purple', fontweight='bold', fontsize=12) 
@@ -492,7 +494,8 @@ def plotVariousTimeseries_fn(showPlotsFlag, d, iterationsToUse=[]):
                 #              zlabel=variableNames[2], fontweight='bold', fontsize=12)
                 ax[j, m].set_xlabel(variableNames[0], fontweight='bold', fontsize=12)
                 ax[j, m].set_ylabel(variableNames[1], fontweight='bold', fontsize=12)
-                ax[j, m].set_zlabel(variableNames[2], fontweight='bold', fontsize=12)
+                if numVars > 2:
+                    ax[j, m].set_zlabel(variableNames[2], fontweight='bold', fontsize=12)
                 
                 ax[j, m].set_xlim((min(xTrainNoisyOriginal[:, 0]), max(xTrainNoisyOriginal[:, 0])))
                 ax[j, m].set_ylim((min(xTrainNoisyOriginal[:, 1]), max(xTrainNoisyOriginal[:, 1])))
@@ -553,11 +556,13 @@ def plotVariousTimeseries_fn(showPlotsFlag, d, iterationsToUse=[]):
                 #        zlabel=variableNames[2], fontweight='bold', fontsize=12)
                 ax.set_xlabel(variableNames[0], fontweight='bold', fontsize=12)
                 ax.set_ylabel(variableNames[1], fontweight='bold', fontsize=12)
-                ax.set_zlabel(variableNames[2], fontweight='bold', fontsize=12) 
+                if numVars > 2:
+                    ax.set_zlabel(variableNames[2], fontweight='bold', fontsize=12) 
                 
                 ax.set_xlim((min(xTest[:, 0]), max(xTest[:, 0])))
                 ax.set_ylim((min(xTest[:, 1]), max(xTest[:, 1])))
-                ax.set_zlim((min(xTest[:, 2]), max(xTest[:, 2])))
+                if numVars > 2:
+                    ax.set_zlim((min(xTest[:, 2]), max(xTest[:, 2])))
                 ax.set_title('Test traj # ' + str(k) + '\n' + 'evolved by model # ' + str(j) + \
                              ' = purple', fontweight='bold', fontsize=12)
                 if numVars == 2:

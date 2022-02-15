@@ -194,12 +194,13 @@ def plotFiguresOfMeritMosaics_fn(d):
         # [3, 0]:
         r = 3
         c = 0
+        tag2 = 'Val '
         thisValList = np.array(historyXDotDiffEnvelopeValAll[traj])
         for v in range(numTrajTrain - 1):
             thisMark = markerList[indsVal[v]]
             this = thisValList[:, v,]
             
-            titleStr = tag + 'xDots 80th percentile of errors, ideal = 0'
+            titleStr = tag2 + 'xDots 80th percentile of errors, ideal = 0'
             yLims = [-0.1, 1.5]
             legendLoc = ''
             idealLineVal = 0
@@ -210,12 +211,13 @@ def plotFiguresOfMeritMosaics_fn(d):
         # [4, 0]:
         r = 4
         c = 0
+        tag2 = 'Val '
         thisValList = np.array(historyXDotHistogramCorrelationFoMValAll[traj])
         for v in range(numTrajTrain - 1):
             thisMark = markerList[indsVal[v]]
             this = thisValList[:, v,] 
             
-            titleStr = tag + 'xDot histogram correlation, ideal = 1'
+            titleStr = tag2 + 'xDot histogram correlation, ideal = 1'
             yLims = [-0.1, 1.5]
             legendLoc = ''
             idealLineVal = 1
@@ -227,6 +229,7 @@ def plotFiguresOfMeritMosaics_fn(d):
         # [0, 1]:
         r = 0
         c = 1
+        thisMark = 'o'
         historyMinHistCorrelationForEvolutions = historyMinHistCorrelationForEvolutionsAll[traj] 
         this = np.array(historyMinHistCorrelationForEvolutions)
         
@@ -322,7 +325,7 @@ def plotFiguresOfMeritMosaics_fn(d):
         thisValList = np.array(historyMinHistCorrelationForEvolutionsValAll[traj])
         # numIters x numValTrajectories x numVars array
         for v in range(numTrajTrain - 1):
-            thisMark = markerList[indsVal[v]]
+            thisMark = markerList[indsVal[v] + 1]
             this = np.array(thisValList[:, v, ])
              
             titleStr = tag + 'Histogram correlation between evolutions, ideal = 1'
@@ -338,7 +341,7 @@ def plotFiguresOfMeritMosaics_fn(d):
         c = 2
         thisValList = np.array(historyInBoundsFoMValAll[traj])
         for v in range(numTrajTrain - 1):
-            thisMark = markerList[indsVal[v]]
+            thisMark = markerList[indsVal[v] + 1]
             this = thisValList[:, v,] 
              
             titleStr = tag + 'In-bounds fraction, ideal = 1'
@@ -354,7 +357,7 @@ def plotFiguresOfMeritMosaics_fn(d):
         c = 2
         thisValList = np.array(historyInEnvelopeFoMValAll[traj])
         for v in range(numTrajTrain - 1):
-            thisMark = markerList[indsVal[v]]
+            thisMark = markerList[indsVal[v] + 1]
             this = thisValList[:, v,]
              
             titleStr = tag + 'In-envelope fraction, ideal = 1'
@@ -370,7 +373,7 @@ def plotFiguresOfMeritMosaics_fn(d):
         c = 2
         thisValList = np.array(historyStdDevFoMValAll[traj])
         for v in range(numTrajTrain - 1):
-            thisMark = markerList[indsVal[v]]
+            thisMark = markerList[indsVal[v] + 1]
             this = thisValList[:, v,]
             this[this > 2] = 1
             this[this < -2] = -1  # not necessary
@@ -388,7 +391,7 @@ def plotFiguresOfMeritMosaics_fn(d):
         c = 2
         thisValList = np.array(historyHistogramCorrelationFoMValAll[traj])
         for v in range(numTrajTrain - 1):
-            thisMark = markerList[indsVal[v]]
+            thisMark = markerList[indsVal[v] + 1]
             this = thisValList[:, v,]
             
             titleStr = tag + 'Histogram correlation, ideal = 1'
@@ -404,7 +407,7 @@ def plotFiguresOfMeritMosaics_fn(d):
         c = 2
         thisValList = np.array(historyFftCorrelationFoMValAll[traj])        
         for v in range(numTrajTrain - 1):
-            thisMark = markerList[indsVal[v]]
+            thisMark = markerList[indsVal[v] + 1]
             this = thisValList[:, v,] 
             
             titleStr = tag + 'FFT correlation, ideal = 1'
